@@ -1,0 +1,10 @@
+services:
+    wmprotected_taxonomy.vocabulary_form_alter:
+        class: Drupal\wmprotected_vocabulary\Form\VocabularyFormAlter
+        arguments:
+            - '@entity_field.manager'
+
+    wmprotected_taxonomy.term_delete_form_alter:
+        class: Drupal\wmprotected_vocabulary\Form\TermDeleteFormAlter
+        arguments:
+            - '@entity_type.manager'
