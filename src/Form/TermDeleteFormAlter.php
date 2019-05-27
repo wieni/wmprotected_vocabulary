@@ -67,7 +67,7 @@ class TermDeleteFormAlter
 
     protected function checkContent(Term $term, array $fields)
     {
-        foreach ($fields as $field) {
+        foreach (array_filter($fields) as $field) {
             list($entityType, $bundle, $fieldName) = explode(':', $field);
 
             if (!$entityType || !$fieldName) {
