@@ -1,26 +1,26 @@
 {
-  "name": "wieni/wmprotected_vocabulary",
-  "type": "drupal-module",
-  "description": "Adds the possibility to protect taxonomy terms from being deleted when they are being referenced in certain fields",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Wieni",
-      "email": "info@wieni.be"
+    "name": "wieni/wmprotected_vocabulary",
+    "type": "drupal-module",
+    "description": "Adds the possibility to protect taxonomy terms from being deleted when they are being referenced in certain fields",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wieni",
+            "email": "info@wieni.be"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "drupal/core": "^8.0 || ^9.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.0",
+        "wieni/wmcodestyle": "^1.0"
+    },
+    "scripts": {
+        "coding-standards": [
+            "@composer normalize",
+            "php-cs-fixer fix --config=.php_cs.php"
+        ]
     }
-  ],
-  "require": {
-    "php": ">=7.1.0",
-    "drupal/core": "^8.0 || ^9.0"
-  },
-  "require-dev": {
-    "ergebnis/composer-normalize": "^2.0",
-    "wieni/wmcodestyle": "^1.0"
-  },
-  "scripts": {
-    "coding-standards": [
-      "@composer normalize",
-      "php-cs-fixer fix --config=.php_cs.php"
-    ]
-  }
 }
