@@ -4,6 +4,7 @@ namespace Drupal\wmprotected_vocabulary\Form;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Form\TermDeleteForm;
@@ -15,11 +16,15 @@ class TermDeleteFormAlter
 
     /** @var EntityTypeManagerInterface */
     protected $entityTypeManager;
+    /** @var MessengerInterface */
+    protected $messenger;
 
     public function __construct(
-        EntityTypeManagerInterface $entityTypeManager
+        EntityTypeManagerInterface $entityTypeManager,
+        MessengerInterface $messenger
     ) {
         $this->entityTypeManager = $entityTypeManager;
+        $this->messenger = $messenger;
     }
 
     public function alterForm(
@@ -55,7 +60,7 @@ class TermDeleteFormAlter
         }
 
         $form['actions']['submit']['#disabled'] = true;
-        drupal_set_message($this->t('This term can not be deleted since it has content.'));
+        $this->messenger->addStatus($this->t('This term can not be deleted since it has content.'));
     }
 
     protected function checkContent(Term $term, array $fields): bool
