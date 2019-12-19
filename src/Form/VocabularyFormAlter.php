@@ -26,7 +26,7 @@ class VocabularyFormAlter
         array &$form,
         FormStateInterface $formState,
         string $formId
-    ) {
+    ): void {
         if (!$this->isConfigForm($formState)) {
             return;
         }
@@ -77,7 +77,7 @@ class VocabularyFormAlter
         VocabularyInterface $type,
         array $form,
         FormStateInterface $formState
-    ) {
+    ): void {
         $protected = (bool) $formState->getValue('protected');
 
         if (!$protected) {
@@ -116,7 +116,7 @@ class VocabularyFormAlter
         array &$fields,
         string $entityType,
         array $fieldNames
-    ) {
+    ): void {
         foreach ($fieldNames as $fieldName => $info) {
             if (!isset($info['bundles'])) {
                 continue;
@@ -132,7 +132,7 @@ class VocabularyFormAlter
         string $entityType,
         array $bundles,
         string $fieldName
-    ) {
+    ): void {
         foreach ($bundles as $bundle) {
             $this->processFieldDefinition($vocabulary, $fields, $entityType, $bundle, $fieldName);
         }
@@ -144,7 +144,7 @@ class VocabularyFormAlter
         string $entityType,
         string $bundle,
         string $fieldName
-    ) {
+    ): void {
         $definitions = $this->entityFieldManager->getFieldDefinitions($entityType, $bundle);
 
         if (!isset($definitions[$fieldName])) {
@@ -160,10 +160,9 @@ class VocabularyFormAlter
         $settings = $definition->getSettings();
 
         if (
-            !isset($settings['handler']) ||
-            $settings['handler'] !== 'default:taxonomy_term' ||
-            !isset($settings['handler_settings']['target_bundles']) ||
-            !in_array($vocabulary->id(), $settings['handler_settings']['target_bundles'])
+            !isset($settings['handler'], $settings['handler_settings']['target_bundles'])
+            || $settings['handler'] !== 'default:taxonomy_term'
+            || !in_array($vocabulary->id(), $settings['handler_settings']['target_bundles'], true)
         ) {
             return;
         }

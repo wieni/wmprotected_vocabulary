@@ -26,8 +26,8 @@ class TermDeleteFormAlter
         array &$form,
         FormStateInterface $formState,
         string $formId
-    ) {
-        if (!$this->isTermDeleteForm($formState)) {
+    ): void {
+        if (!$formState->getFormObject() instanceof TermDeleteForm) {
             return;
         }
 
@@ -58,17 +58,10 @@ class TermDeleteFormAlter
         drupal_set_message($this->t('This term can not be deleted since it has content.'));
     }
 
-    protected function isTermDeleteForm(FormStateInterface $formState)
-    {
-        $formObject = $formState->getFormObject();
-
-        return $formObject instanceof TermDeleteForm;
-    }
-
-    protected function checkContent(Term $term, array $fields)
+    protected function checkContent(Term $term, array $fields): bool
     {
         foreach (array_filter($fields) as $field) {
-            list($entityType, $bundle, $fieldName) = explode(':', $field);
+            [$entityType, $bundle, $fieldName] = explode(':', $field);
 
             if (!$entityType || !$fieldName) {
                 continue;

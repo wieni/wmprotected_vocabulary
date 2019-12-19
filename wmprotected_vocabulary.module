@@ -1,17 +1,16 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\wmprotected_vocabulary\Form\TermDeleteFormAlter;
+use Drupal\wmprotected_vocabulary\Form\VocabularyFormAlter;
 
-/**
- * Implements hook_form_alter().
- */
-function wmprotected_vocabulary_form_alter(&$form, FormStateInterface $formState, $formId)
+function wmprotected_vocabulary_form_alter(array &$form, FormStateInterface $formState, string $formId)
 {
-    /* @var \Drupal\wmprotected_vocabulary\Form\VocabularyFormAlter $configFormService */
+    /* @var VocabularyFormAlter $configFormService */
     $configFormService = \Drupal::service('wmprotected_taxonomy.vocabulary_form_alter');
     $configFormService->alterForm($form, $formState, $formId);
 
-    /* @var \Drupal\wmprotected_vocabulary\Form\TermDeleteFormAlter $deleteFormService */
+    /* @var TermDeleteFormAlter $deleteFormService */
     $deleteFormService = \Drupal::service('wmprotected_taxonomy.term_delete_form_alter');
     $deleteFormService->alterForm($form, $formState, $formId);
 }
