@@ -9,4 +9,4 @@ wmprotected_vocabulary
 [![Total Downloads](https://poser.pugx.org/wieni/wmprotected_vocabulary/downloads)](https://packagist.org/packages/wieni/wmprotected_vocabulary)
 [![License](https://poser.pugx.org/wieni/wmprotected_vocabulary/license)](https://packagist.org/packages/wieni/wmprotected_vocabulary)
 
-> Adds the possibility to protect taxonomy terms from being deleted when they are being referenced in certain fields
+> Adds the possibility to protect taxonomy terms from being deleted when they are being referenced in certain fields.

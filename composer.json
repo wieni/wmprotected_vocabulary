@@ -1,7 +1,7 @@
 {
     "name": "wieni/wmprotected_vocabulary",
     "type": "drupal-module",
-    "description": "Adds the possibility to protect taxonomy terms from being deleted when they are being referenced in certain fields",
+    "description": "Adds the possibility to protect taxonomy terms from being deleted when they are being referenced in certain fields.",
     "license": "MIT",
     "authors": [
         {
