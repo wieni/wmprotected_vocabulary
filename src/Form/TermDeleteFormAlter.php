@@ -40,7 +40,7 @@ class TermDeleteFormAlter
         $formObject = $formState->getFormObject();
         /* @var Term $term */
         $term = $formObject->getEntity();
-        $vocabularyId = $term->getVocabularyId();
+        $vocabularyId = $term->bundle();
 
         /* @var VocabularyInterface $vocabulary */
         $vocabulary = $this->entityTypeManager->getStorage('taxonomy_vocabulary')->load($vocabularyId);
