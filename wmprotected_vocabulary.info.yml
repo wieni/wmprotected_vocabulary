@@ -1,7 +1,6 @@
 name: wmprotected_vocabulary
 type: module
 description: Adds the possibility to protect taxonomy terms from being deleted when they are being referenced in certain fields.
-core: 8.x
 core_version_requirement: ^9.2 || ^10
 package: Wieni
 dependencies:
