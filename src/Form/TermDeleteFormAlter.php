@@ -75,6 +75,7 @@ class TermDeleteFormAlter
             $storage = $this->entityTypeManager->getStorage($entityType);
             $query = $storage->getQuery();
             $query->condition($fieldName, $term->id());
+            $query->accessCheck(false);
             $count = $query->execute();
 
             if ($count) {
