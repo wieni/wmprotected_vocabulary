@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Add Drupal 11 compatibility
+
+## [1.2.0]
+### Added
 - Add Drupal 10 compatibility
 
 ### Changed
